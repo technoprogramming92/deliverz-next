@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Topbar() {
   return (
@@ -8,9 +9,9 @@ export default function Topbar() {
           <div className="col-md-12 wow fadeIn" data-wow-delay=".3s">
             <div className="topbar-inner flex">
               <div className="topbar__logo mt3">
-                <a href="home-01.html">
+                <Link href="/">
                   <img src="assets/images/logo/logo.png" alt="" />
-                </a>
+                </Link>
               </div>
 
               <div className="topbar-info">
@@ -21,7 +22,7 @@ export default function Topbar() {
                   <ul className="phone">
                     <li>
                       <p>Call and Order in</p>
-                      <p>910-344-7520</p>
+                      <p>+1 416-261-8480</p>
                     </li>
                   </ul>
                 </div>

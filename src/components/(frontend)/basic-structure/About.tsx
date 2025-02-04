@@ -20,7 +20,7 @@ export default function About() {
                 alt=""
               />
               <div className="image wow fadeInLeft" data-wow-delay=".3s">
-                <img src="assets/images/common/item_11.jpg" alt="" />
+                <img src="assets/images/common/about-1.png" alt="" />
               </div>
               <div className="content wow fadeIn" data-wow-delay=".5s">
                 <h2 className="mb-24 color-3 text-spacing-1">
@@ -137,20 +137,6 @@ export default function About() {
                     <span>Club connect members</span>
                   </li>
                 </ul>
-                <div className="wrap-button flex-wrap">
-                  <a
-                    href="about.html"
-                    className="tf-button flex items-center mr-15 mb-10"
-                  >
-                    READ MORE ABOUT US
-                  </a>
-                  <a
-                    href="book-table.html"
-                    className="tf-button style2 flex items-center"
-                  >
-                    book a table
-                  </a>
-                </div>
               </div>
             </div>
           </div>

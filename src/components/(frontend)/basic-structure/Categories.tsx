@@ -70,13 +70,13 @@ export default function Categories() {
               <div className="image">
                 <img src="assets/images/common/item_2.jpg" alt="" />
                 <img
-                  src="assets/images/common/item-02.png"
+                  src="assets/images/common/pani-puri-1.png"
                   alt=""
                   className="item-1"
                 />
               </div>
               <div className="content">
-                <h4 className="title mb-12">Fried Chicken.</h4>
+                <h4 className="title mb-12">Pani Puri.</h4>
                 <p className="white">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                   elit tellus, luctus nec ullamcorper mattis.
@@ -115,13 +115,13 @@ export default function Categories() {
               <div className="image">
                 <img src="assets/images/common/item_3.jpg" alt="" />
                 <img
-                  src="assets/images/common/item-03.png"
+                  src="assets/images/common/punjabi-1.png"
                   alt=""
                   className="item-1"
                 />
               </div>
               <div className="content">
-                <h4 className="title mb-12">Appetizer.</h4>
+                <h4 className="title mb-12">Punjabi.</h4>
                 <p className="white">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                   elit tellus, luctus nec ullamcorper mattis.

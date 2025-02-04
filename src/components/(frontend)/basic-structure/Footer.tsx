@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="col-md-12 wow fadeIn" data-wow-delay=".3s">
             <ul className="mt-35 footer-link flex justify-center">
               <li>
-                <a href="about.html">About Basilico</a>
+                <a href="about.html">About Spicebar</a>
               </li>
               <li>
                 <a href="order.html">Order Food</a>
@@ -53,16 +53,10 @@ export default function Footer() {
             </h5>
             <ul className="list center">
               <li>
-                <span>62 Big Tree St, Livonia, New York 14487, USA</span>
+                <span>817 Brimley Rd, Scarborough, ON M1J 1C9</span>
               </li>
               <li>
-                <span>themesflat@gmail.com</span>
-              </li>
-              <li>
-                <span>Terms and Conditions</span>
-              </li>
-              <li>
-                <span>Warranty and Services</span>
+                <span>spicebar143@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -79,7 +73,7 @@ export default function Footer() {
               </li>
               <li>
                 <a className="call" href="tel:9103447520">
-                  910-344-7520
+                  +1 416-261-8480
                 </a>
               </li>
             </ul>
@@ -92,22 +86,22 @@ export default function Footer() {
 
           <div className="col-md-4 wow fadeIn" data-wow-delay=".5s">
             <h5 className="white uppercase mb-22 center text-spacing-1">
-              Hour time open
+              KITCHEN OPEN
             </h5>
             <ul className="list center mb-30">
               <li>
                 <span>
-                  Monday – Thursday: <span>8.00am – 21.00pm</span>
+                  Monday – Thursday: <span>2:00 PM - 1:00 AM</span>
                 </span>
               </li>
               <li>
                 <span>
-                  Friday – Saturday : <span>9.00am – 22.00pm</span>
+                  Friday – Saturday : <span>2:00 PM - 2:00 AM</span>
                 </span>
               </li>
               <li>
                 <span>
-                  Sunday: <span>8.00 – 23.00pm</span>
+                  Sunday: <span>2:00 PM - 2:00 AM</span>
                 </span>
               </li>
               <li>
@@ -159,8 +153,8 @@ export default function Footer() {
           <div className="col-md-12">
             <div className="footer-bottom flex items-center">
               <p className="copyright">
-                © Copyright <a href="#">Themesflat</a> 2023. All Rights
-                Reserved.
+                © Copyright <a href="#">Spicebar</a> 2025. All Rights Reserved.
+                Created By: <a href="https://ignitax.com">IGNITAX</a>
               </p>
               <div className="payment-methods">
                 <a className="flex image" href="#">

@@ -25,7 +25,7 @@ export default function Subscriptions() {
               <p className="sub-title">
                 eat freely without worrying about the price
               </p>
-              <h2 className="mb-0">Special Combo Offer</h2>
+              <h2 className="mb-0">Our Thalis</h2>
             </div>
           </div>
           <div className="col-md-4 wow fadeIn" data-wow-delay=".3s">
@@ -93,7 +93,7 @@ export default function Subscriptions() {
               <div className="swiper-wrapper">
                 <div className="swiper-slide">
                   <div className="product-item">
-                    <span className="price gradient">$20.25</span>
+                    <span className="price gradient">$260.00</span>
                     <div className="inner">
                       <div className="overlay">
                         <img src="assets/images/backgroup/bg-box.png" alt="" />
@@ -101,16 +101,16 @@ export default function Subscriptions() {
                       <div className="overlay-2"></div>
                       <div className="content">
                         <h5 className="title mb-20 color-3 pb-20 ic-botom text-spacing-0_5">
-                          <a href="#">Beef Burger Big Combo</a>
+                          <a href="#">Gujarati Tiffin Monthly</a>
                         </h5>
-                        <p className="desc">
-                          Duis sit amet libero volutpat, tempus augue quis,
-                          suscipit sapien. Phasellus a cursus enim.
-                        </p>
+
                         <ul>
-                          <li>A Large Size Beef Burger</li>
-                          <li>A Portion Of French Fries</li>
-                          <li>A Cup Of Cold Pepsi</li>
+                          <li>Veg Sabji (10Oz Bowl)</li>
+                          <li>Kathod (10Oz Bowl)</li>
+                          <li>Dal (10Oz Bowl)</li>
+                          <li>Rice (10Oz Bowl)</li>
+                          <li>Roti (5)</li>
+                          <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
                           <a href="order.html" className="tf-button">
@@ -119,14 +119,14 @@ export default function Subscriptions() {
                         </div>
                       </div>
                       <div className="image">
-                        <img src="assets/images/common/product-2.png" alt="" />
+                        <img src="assets/images/common/thali-1.png" alt="" />
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="swiper-slide">
                   <div className="product-item">
-                    <span className="price gradient">$14.50</span>
+                    <span className="price gradient">$70.00</span>
                     <div className="inner">
                       <div className="overlay">
                         <img src="assets/images/backgroup/bg-box.png" alt="" />
@@ -134,16 +134,16 @@ export default function Subscriptions() {
                       <div className="overlay-2"></div>
                       <div className="content">
                         <h5 className="title mb-20 color-3 pb-20 ic-botom text-spacing-0_5">
-                          <a href="#">Fried Chicken & Cake Combo</a>
+                          <a href="#">Gujarati Tiffin Weekly</a>
                         </h5>
-                        <p className="desc">
-                          Duis sit amet libero volutpat, tempus augue quis,
-                          suscipit sapien. Phasellus a cursus enim.
-                        </p>
+
                         <ul>
-                          <li>2 Pieces Of Fried Chicken</li>
-                          <li>A Baked Custard Pie</li>
-                          <li>A Cup Of Cold Pepsi</li>
+                          <li>Veg Sabji (10Oz Bowl)</li>
+                          <li>Kathod (10Oz Bowl)</li>
+                          <li>Dal (10Oz Bowl)</li>
+                          <li>Rice (10Oz Bowl)</li>
+                          <li>Roti (5)</li>
+                          <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
                           <a href="order.html" className="tf-button">
@@ -152,14 +152,14 @@ export default function Subscriptions() {
                         </div>
                       </div>
                       <div className="image">
-                        <img src="assets/images/common/product-1.png" alt="" />
+                        <img src="assets/images/common/thali-1.png" alt="" />
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="swiper-slide">
                   <div className="product-item">
-                    <span className="price gradient">$20.25</span>
+                    <span className="price gradient">$12.00</span>
                     <div className="inner">
                       <div className="overlay">
                         <img src="assets/images/backgroup/bg-box.png" alt="" />
@@ -167,16 +167,16 @@ export default function Subscriptions() {
                       <div className="overlay-2"></div>
                       <div className="content">
                         <h5 className="title mb-20 color-3 pb-20 ic-botom">
-                          <a href="#">Beef Burger Big Combo</a>
+                          <a href="#">Gujarati Tiffin Daily</a>
                         </h5>
-                        <p className="desc">
-                          Duis sit amet libero volutpat, tempus augue quis,
-                          suscipit sapien. Phasellus a cursus enim.
-                        </p>
+
                         <ul>
-                          <li>A Large Size Beef Burger</li>
-                          <li>A Portion Of French Fries</li>
-                          <li>A Cup Of Cold Pepsi</li>
+                          <li>Veg Sabji (10Oz Bowl)</li>
+                          <li>Kathod (10Oz Bowl)</li>
+                          <li>Dal (10Oz Bowl)</li>
+                          <li>Rice (10Oz Bowl)</li>
+                          <li>Roti (5)</li>
+                          <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
                           <a href="order.html" className="tf-button">
@@ -185,14 +185,14 @@ export default function Subscriptions() {
                         </div>
                       </div>
                       <div className="image">
-                        <img src="assets/images/common/product-2.png" alt="" />
+                        <img src="assets/images/common/thali-1.png" alt="" />
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="swiper-slide">
                   <div className="product-item">
-                    <span className="price gradient">$14.50</span>
+                    <span className="price gradient">$10.00</span>
                     <div className="inner">
                       <div className="overlay">
                         <img src="assets/images/backgroup/bg-box.png" alt="" />
@@ -200,16 +200,16 @@ export default function Subscriptions() {
                       <div className="overlay-2"></div>
                       <div className="content">
                         <h5 className="title mb-20 color-3 pb-20 ic-botom">
-                          <a href="#">Fried Chicken & Cake Combo</a>
+                          <a href="#">Gujarati Tiffin Take Away</a>
                         </h5>
-                        <p className="desc">
-                          Duis sit amet libero volutpat, tempus augue quis,
-                          suscipit sapien. Phasellus a cursus enim.
-                        </p>
+
                         <ul>
-                          <li>2 Pieces Of Fried Chicken</li>
-                          <li>A Baked Custard Pie</li>
-                          <li>A Cup Of Cold Pepsi</li>
+                          <li>Veg Sabji (10Oz Bowl)</li>
+                          <li>Kathod (10Oz Bowl)</li>
+                          <li>Dal (10Oz Bowl)</li>
+                          <li>Rice (10Oz Bowl)</li>
+                          <li>Roti (5)</li>
+                          <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
                           <a href="order.html" className="tf-button">
@@ -218,7 +218,7 @@ export default function Subscriptions() {
                         </div>
                       </div>
                       <div className="image">
-                        <img src="assets/images/common/product-1.png" alt="" />
+                        <img src="assets/images/common/thali-1.png" alt="" />
                       </div>
                     </div>
                   </div>

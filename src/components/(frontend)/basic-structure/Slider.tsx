@@ -67,7 +67,7 @@ export default function Slider() {
                     </div>
                     <div className="content">
                       <p className="mb-14 uppercase white font_600">
-                        Crazy Beefy Burgers
+                        Punjabi Tiffin
                       </p>
                       <h2 className="capitalize mb-40">
                         Up To 20% <br className="show-desktop" />
@@ -88,11 +88,11 @@ export default function Slider() {
                     </div>
                     <div className="content">
                       <p className="mb-14 uppercase white font_600">
-                        Crazy Beefy Burgers
+                        Punjabi Thali
                       </p>
                       <h2 className="capitalize mb-40">
                         Quality Ingredients. <br className="show-desktop" />
-                        Quality Burgers.
+                        Quality Dishes.
                       </h2>
                       <div className="flex">
                         <a href="shop-details.html" className="tf-button">
