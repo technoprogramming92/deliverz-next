@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       test: /\.html$/,
       use: "raw-loader",
     });
+    config.optimization.minimize = false;
     return config;
   },
 };
