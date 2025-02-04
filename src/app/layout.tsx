@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import "../../public/app/bootstrap/css/bootstrap.css";
 import "../../public/app/swiper/swiper-bundle.min.css";
-import "../../public/app/dist/app.css";
 import "../../public/assets/font/font-awesome.css";
 import ClientScripts from "@/components/(frontend)/basic-structure/ClientScripts";
 
