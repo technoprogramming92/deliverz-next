@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Kanit } from "next/font/google";
 
 import "./globals.css";
 import "../../public/app/bootstrap/css/bootstrap.css";
 import "../../public/app/swiper/swiper-bundle.min.css";
+
 import "../../public/assets/font/font-awesome.css";
 import ClientScripts from "@/components/(frontend)/basic-structure/ClientScripts";
+
+const kanit = Kanit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Spicebar Delivery",
@@ -18,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={kanit.className}>
       <body
         className="body header-fixed main counter-scroll home1"
         suppressHydrationWarning
