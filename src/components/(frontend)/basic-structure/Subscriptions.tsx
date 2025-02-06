@@ -1,6 +1,17 @@
-import React from "react";
+"use client";
 
-export default function Subscriptions() {
+import React, { useState } from "react";
+
+interface SubscriptionsProps {
+  handleAddToCart: (
+    id: number,
+    name: string,
+    price: number,
+    image: string
+  ) => void;
+}
+
+export default function Subscriptions({ handleAddToCart }: SubscriptionsProps) {
   return (
     <section className="bg-6 tf-section pb-104">
       <img
@@ -113,9 +124,19 @@ export default function Subscriptions() {
                           <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
-                          <a href="order.html" className="tf-button">
-                            add to cart combo
-                          </a>
+                          <button
+                            className="tf-button"
+                            onClick={() =>
+                              handleAddToCart(
+                                1,
+                                "Gujarati Tiffin Monthly",
+                                260,
+                                "assets/images/common/thali-1.png"
+                              )
+                            }
+                          >
+                            Add to Cart Combo
+                          </button>
                         </div>
                       </div>
                       <div className="image">
@@ -146,9 +167,19 @@ export default function Subscriptions() {
                           <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
-                          <a href="order.html" className="tf-button">
-                            add to cart combo
-                          </a>
+                          <button
+                            className="tf-button"
+                            onClick={() =>
+                              handleAddToCart(
+                                2,
+                                "Gujarati Tiffin Weekly",
+                                70,
+                                "assets/images/common/thali-1.png"
+                              )
+                            }
+                          >
+                            Add to Cart Combo
+                          </button>
                         </div>
                       </div>
                       <div className="image">
@@ -179,9 +210,19 @@ export default function Subscriptions() {
                           <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
-                          <a href="order.html" className="tf-button">
-                            add to cart combo
-                          </a>
+                          <button
+                            className="tf-button"
+                            onClick={() =>
+                              handleAddToCart(
+                                2,
+                                "Gujarati Tiffin Daily",
+                                12,
+                                "assets/images/common/thali-1.png"
+                              )
+                            }
+                          >
+                            Add to Cart Combo
+                          </button>
                         </div>
                       </div>
                       <div className="image">
@@ -212,9 +253,19 @@ export default function Subscriptions() {
                           <li>Extra Roti (0.5$/ea)</li>
                         </ul>
                         <div className="flex">
-                          <a href="order.html" className="tf-button">
-                            add to cart combo
-                          </a>
+                          <button
+                            className="tf-button"
+                            onClick={() =>
+                              handleAddToCart(
+                                2,
+                                "Gujarati Tiffin Take Away",
+                                10,
+                                "assets/images/common/thali-1.png"
+                              )
+                            }
+                          >
+                            Add to Cart Combo
+                          </button>
                         </div>
                       </div>
                       <div className="image">
