@@ -56,7 +56,7 @@ export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
 
       onClose();
     } catch (err) {
-      setError("Failed to connect to server!");
+      setError(`${"Failed to connect to server!" + err}`);
       setLoading(false);
     }
   };
@@ -92,8 +92,8 @@ export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
           )}
           <input
             type="text"
-            name="emailOrPhone"
-            placeholder="Email or Phone"
+            name="email"
+            placeholder="Email"
             required
             onChange={handleChange}
           />

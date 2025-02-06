@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable inside .env");
+  throw new Error(
+    "Please define the MONGODB_URI environment variable inside .env"
+  );
 }
 
 // ✅ Define a global type for caching Mongoose connections
@@ -12,23 +14,26 @@ interface MongooseCache {
   promise: Promise<typeof mongoose> | null;
 }
 
-// ✅ Declare global cache variable for development mode
-declare global {
-  var mongooseCache: MongooseCache;
+// ✅ Explicitly define global object with mongooseCache
+const globalWithMongoose = global as typeof globalThis & {
+  mongooseCache: MongooseCache;
+};
+
+// ✅ Initialize global cache if not already defined
+if (!globalWithMongoose.mongooseCache) {
+  globalWithMongoose.mongooseCache = { conn: null, promise: null };
 }
 
-global.mongooseCache = global.mongooseCache || { conn: null, promise: null };
-
 export const connectDB = async () => {
-  if (global.mongooseCache.conn) {
+  if (globalWithMongoose.mongooseCache.conn) {
     console.log("✅ Using existing MongoDB connection");
-    return global.mongooseCache.conn;
+    return globalWithMongoose.mongooseCache.conn;
   }
 
-  if (!global.mongooseCache.promise) {
-    global.mongooseCache.promise = mongoose
+  if (!globalWithMongoose.mongooseCache.promise) {
+    globalWithMongoose.mongooseCache.promise = mongoose
       .connect(MONGODB_URI, {
-        dbName: "test", 
+        dbName: "test",
       })
       .then((mongooseInstance) => {
         console.log("✅ Connected to MongoDB");
@@ -40,6 +45,7 @@ export const connectDB = async () => {
       });
   }
 
-  global.mongooseCache.conn = await global.mongooseCache.promise;
-  return global.mongooseCache.conn;
+  globalWithMongoose.mongooseCache.conn = await globalWithMongoose.mongooseCache
+    .promise;
+  return globalWithMongoose.mongooseCache.conn;
 };
