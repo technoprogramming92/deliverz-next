@@ -1,11 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { setCookie } from "cookies-next";
+import { setCookie, deleteCookie } from "cookies-next";
 
 interface AuthModalProps {
   onClose: () => void;
-  onLoginSuccess: () => void;
+  onLoginSuccess: (user: {
+    firstName: string;
+    lastName: string;
+    profilePic?: string;
+  }) => void;
 }
 
 export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
@@ -13,12 +17,14 @@ export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    emailOrPhone: "",
+    email: "",
     phone: "",
+    emailOrPhone: "",
     password: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Handle Input Change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,14 +36,29 @@ export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
     e.preventDefault();
     setLoading(true);
     setError("");
+    setSuccessMessage("");
 
     try {
       const endpoint = isSignup ? "/api/auth/register" : "/api/auth/login";
+
+      const payload = isSignup
+        ? {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            password: formData.password,
+          }
+        : {
+            emailOrPhone: formData.emailOrPhone,
+            password: formData.password,
+          };
+
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include", // ✅ Send cookies with request
-        body: JSON.stringify(formData),
+        credentials: "include",
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
@@ -49,14 +70,19 @@ export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
       }
 
       if (!isSignup) {
-        // ✅ Set JWT Token in cookies
         setCookie("token", data.token, { path: "/", maxAge: 7 * 24 * 60 * 60 });
-        onLoginSuccess();
+        onLoginSuccess({
+          firstName: data.user.firstName,
+          lastName: data.user.lastName,
+          profilePic: "/assets/images/avatar.jpg",
+        });
+        setSuccessMessage("Login successful! Redirecting...");
+        setTimeout(() => onClose(), 1500); // Close modal after success message
+      } else {
+        setSuccessMessage("Registration successful! You can now log in.");
       }
-
-      onClose();
     } catch (err) {
-      setError(`${"Failed to connect to server!" + err}`);
+      setError("Failed to connect to server!");
       setLoading(false);
     }
   };
@@ -71,6 +97,7 @@ export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
         <h2 className="modal-title">{isSignup ? "Sign Up" : "Login"}</h2>
 
         {error && <p className="modal-error">{error}</p>}
+        {successMessage && <p className="modal-success">{successMessage}</p>}
 
         <form className="modal-form" onSubmit={handleSubmit}>
           {isSignup && (
@@ -88,24 +115,33 @@ export default function AuthModal({ onClose, onLoginSuccess }: AuthModalProps) {
                 placeholder="Last Name"
                 onChange={handleChange}
               />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                required
+                onChange={handleChange}
+              />
             </>
           )}
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            required
-            onChange={handleChange}
-          />
-          {isSignup && (
+
+          {!isSignup && (
             <input
               type="text"
-              name="phone"
-              placeholder="Phone"
+              name="emailOrPhone"
+              placeholder="Email or Phone"
               required
               onChange={handleChange}
             />
           )}
+
           <input
             type="password"
             name="password"

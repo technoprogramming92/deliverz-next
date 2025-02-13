@@ -15,7 +15,6 @@ export async function POST(req: Request) {
     await connectDB();
     const { emailOrPhone, password } = await req.json();
 
-    // ✅ Validate input
     if (!emailOrPhone || !password) {
       return NextResponse.json(
         { error: "Email/Phone and password are required" },
@@ -23,19 +22,13 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ Trim input to prevent accidental spaces
     const emailOrPhoneTrimmed = emailOrPhone.trim();
 
-    // ✅ Find user by email or phone
     const user = await User.findOne({
       $or: [{ email: emailOrPhoneTrimmed }, { phone: emailOrPhoneTrimmed }],
     }).select("+password");
 
-    // ✅ Debugging (Remove this after testing)
-    console.log("User retrieved from DB:", user);
-
     if (!user) {
-      console.log("User not found in DB");
       return NextResponse.json(
         { error: "Invalid credentials" },
         { status: 401 }
@@ -43,24 +36,25 @@ export async function POST(req: Request) {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
-      console.log("Password comparison failed");
       return NextResponse.json(
         { error: "Invalid credentials" },
         { status: 401 }
       );
     }
 
-    // ✅ Generate JWT Token
     const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, {
       expiresIn: "7d",
     });
 
-    // ✅ Set HttpOnly Cookie
     const response = NextResponse.json(
       {
         message: "Login successful",
+        user: {
+          firstName: user.firstName,
+          lastName: user.lastName,
+        },
+        token,
       },
       { status: 200 }
     );
@@ -70,7 +64,7 @@ export async function POST(req: Request) {
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
-      maxAge: 7 * 24 * 60 * 60, // 7 days
+      maxAge: 7 * 24 * 60 * 60,
     });
 
     return response;

@@ -12,25 +12,46 @@ interface TopbarProps {
 
 export default function Topbar({ cartItems, setShowCart }: TopbarProps) {
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = useState<{ firstName: string; email: string } | null>(
-    null
-  );
+  const [user, setUser] = useState<{
+    firstName: string;
+    lastName: string;
+    profilePic?: string;
+  } | null>(null);
 
-  // Fetch user data from cookie (Token Based)
-  const fetchUserData = () => {
+  // ✅ Restore user session on refresh
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+
     const token = getCookie("token");
     if (token) {
-      // Simulate fetching user data (In real app, fetch from API)
-      setUser({ firstName: "John", email: "john@example.com" });
+      fetch("/api/auth/me", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.user) {
+            setUser({
+              firstName: data.user.firstName,
+              lastName: data.user.lastName,
+              profilePic:
+                data.user.profilePic || "/assets/images/user-placeholder.png",
+            });
+            localStorage.setItem("user", JSON.stringify(data.user));
+          }
+        })
+        .catch(() => setUser(null));
     }
-  };
-
-  useEffect(() => {
-    fetchUserData();
   }, []);
 
+  // ✅ Logout Function
   const handleLogout = () => {
-    deleteCookie("token");
+    deleteCookie("token", { path: "/" });
+    localStorage.removeItem("user"); // ✅ Remove user data from storage
     setUser(null);
   };
 
@@ -42,7 +63,7 @@ export default function Topbar({ cartItems, setShowCart }: TopbarProps) {
             <div className="topbar-inner flex">
               <div className="topbar__logo mt3">
                 <Link href="/">
-                  <img src="assets/images/logo/logo.png" alt="" />
+                  <img src="assets/images/logo/logo.png" alt="Logo" />
                 </Link>
               </div>
 
@@ -62,24 +83,31 @@ export default function Topbar({ cartItems, setShowCart }: TopbarProps) {
                   <img src="assets/images/icon/dashed.png" alt="" />
                 </div>
                 <ul className="action gradient">
-                  {/* ✅ Login / Logout Button with Better UI */}
-                  <li>
-                    {user ? (
-                      <button
-                        className="auth-button logout"
-                        onClick={handleLogout}
-                      >
-                        Logout ({user.firstName})
+                  {/* ✅ Login / Logout Button */}
+                  {user ? (
+                    <li className="user-info">
+                      <div className="user-container">
+                        <img
+                          src={user.profilePic}
+                          alt="User"
+                          className="user-avatar"
+                        />
+                        <span className="user-name">{`${user.firstName} ${user.lastName}`}</span>
+                      </div>
+                      <button className="logout-btn" onClick={handleLogout}>
+                        Logout
                       </button>
-                    ) : (
+                    </li>
+                  ) : (
+                    <li>
                       <button
-                        className="auth-button login-btn"
+                        className="login-btn"
                         onClick={() => setShowModal(true)}
                       >
-                        <span>🔑 Login </span>
+                        Login
                       </button>
-                    )}
-                  </li>
+                    </li>
+                  )}
 
                   {/* ✅ Cart Button */}
                   <li
@@ -125,7 +153,10 @@ export default function Topbar({ cartItems, setShowCart }: TopbarProps) {
       {showModal && (
         <AuthModal
           onClose={() => setShowModal(false)}
-          onLoginSuccess={fetchUserData}
+          onLoginSuccess={(userData) => {
+            setUser(userData);
+            localStorage.setItem("user", JSON.stringify(userData)); // ✅ Store user data on login
+          }}
         />
       )}
     </div>

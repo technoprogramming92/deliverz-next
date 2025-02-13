@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface CartItem {
   id: number;
@@ -21,6 +22,14 @@ export default function Cart({
   setCartItems,
   setShowCart,
 }: CartProps) {
+  const router = useRouter();
+
+  // ✅ Persist cart data in localStorage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // ✅ Increase Item Quantity
   const handleIncrease = (id: number) => {
     setCartItems((prevCart) =>
       prevCart.map((item) =>
@@ -29,6 +38,7 @@ export default function Cart({
     );
   };
 
+  // ✅ Decrease Item Quantity (Removes item if quantity is 1)
   const handleDecrease = (id: number) => {
     setCartItems((prevCart) =>
       prevCart
@@ -41,14 +51,22 @@ export default function Cart({
     );
   };
 
+  // ✅ Remove Item from Cart
   const handleRemove = (id: number) => {
     setCartItems((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
+  // ✅ Calculate Total Price
   const getTotalPrice = () =>
     cartItems
       .reduce((total, item) => total + item.price * item.quantity, 0)
       .toFixed(2);
+
+  // ✅ Handle Checkout
+  const handleCheckout = () => {
+    setShowCart(false);
+    router.push("/checkout");
+  };
 
   return (
     <div className="cart-overlay">
@@ -71,12 +89,22 @@ export default function Cart({
                   className="cart-item-img"
                 />
                 <div className="cart-details">
-                  <h4 className="text-black">{item.name}</h4>
-                  <p>${item.price.toFixed(2)}</p>
+                  <h4 className="cart-item-name">{item.name}</h4>
+                  <p className="cart-item-price">${item.price.toFixed(2)}</p>
                   <div className="cart-actions">
-                    <button onClick={() => handleDecrease(item.id)}>-</button>
-                    <span>{item.quantity}</span>
-                    <button onClick={() => handleIncrease(item.id)}>+</button>
+                    <button
+                      className="quantity-btn"
+                      onClick={() => handleDecrease(item.id)}
+                    >
+                      -
+                    </button>
+                    <span className="quantity-value">{item.quantity}</span>
+                    <button
+                      className="quantity-btn"
+                      onClick={() => handleIncrease(item.id)}
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
                 <button
@@ -94,9 +122,11 @@ export default function Cart({
 
         {/* Cart Footer */}
         <div className="cart-footer">
-          <h3>Total: ${getTotalPrice()}</h3>
+          <h3 className="cart-total">Total: ${getTotalPrice()}</h3>
           {cartItems.length > 0 && (
-            <button className="checkout-btn">Proceed to Checkout</button>
+            <button className="checkout-btn" onClick={handleCheckout}>
+              Proceed to Checkout
+            </button>
           )}
         </div>
       </div>
