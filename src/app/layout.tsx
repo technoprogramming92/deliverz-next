@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Kanit } from "next/font/google";
-
+import { Providers } from "./providers";
 import "./globals.css";
 import "../../public/app/bootstrap/css/bootstrap.css";
 import "../../public/app/swiper/swiper-bundle.min.css";
@@ -35,7 +35,7 @@ export default function RootLayout({
         <div className="preload preload-container">
           <div className="preload-logo"></div>
         </div>
-        {children}
+        <Providers>{children}</Providers>
         <Script src="https://code.jquery.com/jquery-3.6.0.min.js"></Script>
         <Script src="/app/js/jquery.cookie.min.js"></Script>
         <Script src="/app/js/plugin.js"></Script>
